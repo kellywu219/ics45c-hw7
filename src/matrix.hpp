@@ -18,3 +18,20 @@ Matrix<T>::Matrix(int rows, int cols)
         data[i] = Array<T>{cols};
     }
 }
+
+template <typename T>
+int Matrix<T>::num_rows() const {
+    return rows;
+}
+
+template <typename T>
+int Matrix<T>::num_cols() const {
+    return cols;
+}
+
+template <typename T>
+void Array<T>::fill(const T& val) {
+    for (int i = 0; i < len; ++i) {
+        buf[i] = val;
+    }
+}
