@@ -3,4 +3,9 @@
 
 template <typename T>
 Array<T>::Array() : len{0}, buf{nullptr} {
-}a
+}
+
+template <typename T>
+int Array<T>::length() const {
+    return len;
+}
