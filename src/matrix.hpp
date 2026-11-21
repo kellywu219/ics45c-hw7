@@ -57,7 +57,7 @@ void Matrix<T>::fill_with_fn(Fn fn) {
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& out, const Array<T>& array) {
+std::ostream& operator<<(std::ostream& out, const Matrix<T>& matrix) {
     for (int i = 0; i < matrix.num_rows(); ++i) {
         out << matrix[i] << '\n';
     }
@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream& out, const Array<T>& array) {
 }
 
 template <typename T>
-std::istream& operator>>(std::istream& in, Array<T>& array) {
+std::istream& operator>>(std::istream& in, Matrix<T>& matrix) {
     for (int i = 0; i < matrix.num_rows(); ++i) {
         in >> matrix[i];
     }
