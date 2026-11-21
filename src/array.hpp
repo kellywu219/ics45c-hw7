@@ -54,4 +54,11 @@ template <typename T>
 Array<T>::Array(Array&& other) noexcept
     : len{other.len}, buf{other.buf} {
     other.buf = nullptr;
+    other.len = 0;
+}
+
+template <typename T>
+void swap(Array<T>& lhs, Array<T>& rhs) noexcept {
+    std::swap(lhs.len, rhs.len);
+    std::swap(lhs.buf, rhs.buf);
 }
