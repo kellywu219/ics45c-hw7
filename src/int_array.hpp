@@ -39,7 +39,22 @@ public:
         return this;
     }
     // TODO Step 5: move assignment
+    Array& operator=(Array&& other) noexcept{
+        if (this != &other) {
+            delete[] buf;
+            len = other.len;
+            buf = other.buf;
+    
+            other.len = 0;
+            other.buf = nullptr;
+        }
+        return *this;
+    }
+
     // TODO Step 4: destructor
+    ~Array() {
+    delete[] buf;
+    }
 
     int length() const {
         return len;
