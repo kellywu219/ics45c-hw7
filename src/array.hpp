@@ -1,6 +1,15 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#include <utility>
+
+#include <iomanip>
+
+
 template <typename T>
 Array<T>::Array() : len{0}, buf{nullptr} {
 }
@@ -84,3 +93,26 @@ Array<T>& Array<T>::operator=(Array&& other) noexcept {
     }
     return *this;
 }
+
+template <typename T>
+std::ostream& operator<<(std::ostream& out, const Array<T>& array) {
+    std::stringstream temp;
+    temp << std::setprecision(2) << std::fixed << std::right;
+
+    for (int i = 0; i < array.length(); ++i) {
+        temp << std::setw(8) << array[i];
+    }
+
+    out << temp.str();
+    return out;
+}
+
+template <typename T>
+std::istream& operator>>(std::istream& in, Array<T>& array) {
+    for (int i = 0; i < array.length(); ++i) {
+        in >> array[i];
+    }
+    return in;
+}
+
+#endif
