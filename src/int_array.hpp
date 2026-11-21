@@ -31,6 +31,13 @@ public:
         std::swap(lhs.buf, rhs.buf);
     }
     // TODO Step 5: copy assignment
+    Array& operator=(const Array& other) {
+        if (this != &other) {
+            Array tep other};
+            swap(*this, temp);
+        }
+        return this;
+    }
     // TODO Step 5: move assignment
     // TODO Step 4: destructor
 
