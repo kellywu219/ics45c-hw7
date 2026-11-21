@@ -62,3 +62,25 @@ void swap(Array<T>& lhs, Array<T>& rhs) noexcept {
     std::swap(lhs.len, rhs.len);
     std::swap(lhs.buf, rhs.buf);
 }
+
+template <typename T>
+Array<T>& Array<T>::operator=(const Array& other) {
+    if (this != &other) {
+        Array temp{other};
+        swap(*this, temp);
+    }
+    return *this;
+}
+
+template <typename T>
+Array<T>& Array<T>::operator=(Array&& other) noexcept {
+    if (this != &other) {
+        delete[] buf;
+        len = other.len;
+        buf = other.buf;
+
+        other.len = 0;
+        other.buf = nullptr;
+    }
+    return *this;
+}
