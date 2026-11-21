@@ -30,6 +30,16 @@ int Matrix<T>::num_cols() const {
 }
 
 template <typename T>
+Array<T>& Matrix<T>::operator[](int row) {
+    return data[row];
+}
+
+template <typename T>
+const Array<T>& Matrix<T>::operator[](int row) const {
+    return data[row];
+}
+
+template <typename T>
 void Matrix<T>::fill(const T& val) {
     for (int i = 0; i < rows; ++i) {
         data[i].fill(val);
