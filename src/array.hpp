@@ -95,6 +95,14 @@ Array<T>& Array<T>::operator=(Array&& other) noexcept {
 }
 
 template <typename T>
+template <typename Fn>
+void Array<T>::fill_with_fn(Fn fn) {
+    for (int i = 0; i < len; ++i) {
+        buf[i] = fn(i);
+    }
+}
+
+template <typename T>
 std::ostream& operator<<(std::ostream& out, const Array<T>& array) {
     std::stringstream temp;
     temp << std::setprecision(2) << std::fixed << std::right;
