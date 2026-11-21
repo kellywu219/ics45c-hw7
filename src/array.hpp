@@ -23,9 +23,20 @@ bool Array<T>::in_bounds(int index) const {
 }
 
 template <typename T>
-
+T& Array<T>::operator[](int index) {
+    if (!in_bounds(index)) {
+        throw "Exception operator[](" + std::to_string(index) + ") Out Of Range";
+    }
+    return buf[index];
+}
 
 template <typename T>
+T& Array<T>::operator[](int index) const {
+    if (!in_bounds(index)) {
+        throw "Exception operator[](" + std::to_string(index) + ") Out Of Range";
+    }
+    return buf[index];
+}
 
 template <typename T>
 
