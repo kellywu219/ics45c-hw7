@@ -30,8 +30,8 @@ int Matrix<T>::num_cols() const {
 }
 
 template <typename T>
-void Array<T>::fill(const T& val) {
-    for (int i = 0; i < len; ++i) {
-        buf[i] = val;
+void Matrix<T>::fill(const T& val) {
+    for (int i = 0; i < rows; ++i) {
+        data[i].fill(val);
     }
 }
