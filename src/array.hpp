@@ -39,4 +39,19 @@ const T& Array<T>::operator[](int index) const {
 }
 
 template <typename T>
+Array<T>::~Array() {
+    delete[] buf;
+}
 
+template <typename T>
+Array<T>::Array(const Array& other) : Array(other.len) {
+    for (int i = 0; i < len; ++i) {
+        buf[i] = other.buf[i];
+    }
+}
+
+template <typename T>
+Array<T>::Array(Array&& other) noexcept
+    : len{other.len}, buf{other.buf} {
+    other.buf = nullptr;
+}
