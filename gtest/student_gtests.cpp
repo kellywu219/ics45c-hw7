@@ -61,3 +61,49 @@ TEST(IntArrayTests, EmptyArrayBounds) {
     Array a;
     EXPECT_THROW(a[0], std::string);
 }
+
+TEST(IntArrayTests, CopyConstructor) {
+    Array a{3};
+    a.fill(5);
+
+    Array b{a};
+    b[0] = 10;
+
+    EXPECT_EQ(a[0], 5);
+    EXPECT_EQ(b[0], 10);
+    EXPECT_EQ(b.length(), 3);
+}
+
+TEST(IntArrayTests, MoveConstructor) {
+    Array a{3};
+    a.fill(7);
+
+    Array b{std::move(a)};
+
+    EXPECT_EQ(b.length(), 3);
+    EXPECT_EQ(b[0], 7);
+}
+
+TEST(IntArrayTests, CopyAssignment) {
+    Array a{3};
+    a.fill(5);
+
+    Array b{1};
+    b = a;
+    b[0] = 10;
+
+    EXPECT_EQ(b.length(), 3);
+    EXPECT_EQ(a[0], 5);
+    EXPECT_EQ(b[0], 10);
+}
+
+TEST(IntArrayTests, MoveAssignment) {
+    Array a{3};
+    a.fill(9);
+
+    Array b{1};
+    b = std::move(a);
+
+    EXPECT_EQ(b.length(), 3);
+    EXPECT_EQ(b[0], 9);
+}
