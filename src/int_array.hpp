@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <utility>
+#include <string>
 
 class Array {
 public:
@@ -63,16 +64,26 @@ public:
     int& operator[](int index) {
         // TODO Step 3: throw std::string when the index is out of bounds:
         //     "Exception operator[](" + std::to_string(index) + ") Out Of Range"
+        if (!in_bounds(index)) {
+            throw "Exception operator[](" + std::to_string(index) + ") Out Of Range";
+        }
         return buf[index];
     }
 
     const int& operator[](int index) const {
         // TODO Step 3: the same check as above
+        if (!in_bounds(index)) {
+            throw "Exception operator[](" + std::to_string(index) + ") Out Of Range";
+        }
         return buf[index];
     }
 
     // TODO Step 2: void fill(int val) - set every element to val
-
+    void fill(int val) {
+        for (int i = 0; i < len; ++i) {
+            buf[i] = val;
+        }
+    }
 private:
     int len;
     int* buf;
