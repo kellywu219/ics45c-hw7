@@ -21,7 +21,7 @@ public:
         }
     }
     // TODO Step 4: move constructor
-    Array(Array&& other)noexcept: len{other.len}, buf{other.buf} {
+    Array(Array&& other) noexcept : len{other.len}, buf{other.buf} {
     other.len = 0;
     other.buf = nullptr;
     }
