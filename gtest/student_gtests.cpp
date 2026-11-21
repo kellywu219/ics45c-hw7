@@ -23,3 +23,41 @@ TEST(IntArrayTests, SizedArrayReportsItsLength) {
 }
 
 // ADD YOUR TESTS HERE:
+TEST(IntArrayTests, Fill) {
+    Array a{5};
+    a.fill(10);
+
+    for (int i = 0; i < a.length(); ++i) {
+        EXPECT_EQ(a[i], 10);
+    }
+}
+
+TEST(IntArrayTests, Subscript) {
+    Array a{3};
+    a[0] = 10;
+    a[2] = 20;
+
+    EXPECT_EQ(a[0], 10);
+    EXPECT_EQ(a[2], 20);
+}
+
+TEST(IntArrayTests, OutOfBounds) {
+    Array a{3};
+
+    EXPECT_THROW(a[-1], std::string);
+    EXPECT_THROW(a[3], std::string);
+}
+
+TEST(IntArrayTests, OneElement) {
+    Array a{1};
+    a.fill(8);
+
+    EXPECT_EQ(a.length(), 1);
+    EXPECT_EQ(a[0], 8);
+    EXPECT_THROW(a[1], std::string);
+}
+
+TEST(IntArrayTests, EmptyArrayBounds) {
+    Array a;
+    EXPECT_THROW(a[0], std::string);
+}
