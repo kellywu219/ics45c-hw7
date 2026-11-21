@@ -31,7 +31,7 @@ T& Array<T>::operator[](int index) {
 }
 
 template <typename T>
-T& Array<T>::operator[](int index) const {
+const T& Array<T>::operator[](int index) const {
     if (!in_bounds(index)) {
         throw "Exception operator[](" + std::to_string(index) + ") Out Of Range";
     }
