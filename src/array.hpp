@@ -18,6 +18,9 @@ void Array<T>::fill(const T& val) {
 }
 
 template <typename T>
+bool Array<T>::in_bounds(int index) const {
+    return index >= 0 && index < len;
+}
 
 template <typename T>
 
