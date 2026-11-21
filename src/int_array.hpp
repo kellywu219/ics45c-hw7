@@ -21,11 +21,15 @@ public:
         }
     }
     // TODO Step 4: move constructor
-    Array(Array&& other): len{other.len}, buf{other.buf} {
+    Array(Array&& other)noexcept: len{other.len}, buf{other.buf} {
     other.len = 0;
     other.buf = nullptr;
     }
     // TODO Step 5: friend void swap(Array& lhs, Array& rhs) noexcept
+    friend void swap(Array& lhs, Array& rhs) noexcept {
+        std::swap(lhs.len, rhs.len);
+        std::swap(lhs.buf, rhs.buf);
+    }
     // TODO Step 5: copy assignment
     // TODO Step 5: move assignment
     // TODO Step 4: destructor
